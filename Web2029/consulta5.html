@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calcular Importe de Examen de Admisión</title>
+    <link rel="stylesheet" href="consulta5.html">
+</head>
+<body>
+    <h1>Calcular Importe de Examen de Admisión</h1>
+
+    <form id="calculoForm">
+        <label for="procedencia">Procedencia del Colegio (NACIONAL o PARTICULAR):</label>
+        <input type="text" id="procedencia" name="procedencia" required />
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        const importeOriginal = 285;
+
+        document.getElementById('calculoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const procedenciaInput = document.getElementById('procedencia').value.trim().toUpperCase();
+            let descuento = 0;
+            let errorMessage = '';
+            let importeAPagar = importeOriginal;
+
+            if (procedenciaInput === 'NACIONAL') {
+                descuento = importeOriginal * 0.10;
+                importeAPagar = importeOriginal - descuento;
+            } else if (procedenciaInput === 'PARTICULAR') {
+                descuento = importeOriginal * 0.03;
+                importeAPagar = importeOriginal - descuento;
+            } else {
+                errorMessage = "Procedencia no válida. Por favor, ingrese 'NACIONAL' o 'PARTICULAR'.";
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            if (errorMessage) {
+                resultadoDiv.innerHTML = `<p style="color: red;">${errorMessage}</p>`;
+            } else {
+                resultadoDiv.innerHTML = `
+                    <h2>Resultado del Cálculo:</h2>
+                    <p><strong>Importe original:</strong> $${importeOriginal.toFixed(2)}</p>
+                    <p><strong>Descuento aplicado:</strong> $${descuento.toFixed(2)}</p>
+                    <p><strong>Importe a pagar:</strong> $${importeAPagar.toFixed(2)}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

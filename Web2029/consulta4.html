@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cálculo de Sueldo</title>
+</head>
+<body>
+  <h1>Cálculo de Sueldo de Trabajadores</h1>
+
+  <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 80%; margin: auto;">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Horas trabajadas</th>
+        <th>Pago por hora</th>
+        <th>Sueldo Bruto (SB)</th>
+        <th>Retención (RETE)</th>
+        <th>Sueldo Neto (SN)</th>
+      </tr>
+    </thead>
+    <tbody id="tablaTrabajadores">
+      
+    </tbody>
+  </table>
+
+  <script>
+    const trabajadores = [
+      { nombre: "EKEKO", horas: 130, pago: 20 },
+      { nombre: "HUACHOLA", horas: 100, pago: 15 }
+    ];
+
+    const tbody = document.getElementById('tablaTrabajadores');
+
+    trabajadores.forEach(trabajador => {
+      const sb = trabajador.horas * trabajador.pago;
+      const rete = sb > 1500 ? sb * 0.10 : 0;
+      const sn = sb - rete;
+
+      const fila = document.createElement('tr');
+      fila.innerHTML = `
+        <td>${trabajador.nombre}</td>
+        <td>${trabajador.horas}</td>
+        <td>${trabajador.pago}</td>
+        <td>${sb.toFixed(2)}</td>
+        <td>${rete.toFixed(2)}</td>
+        <td>${sn.toFixed(2)}</td>
+      `;
+      tbody.appendChild(fila);
+    });
+  </script>
+</body>
+</html>

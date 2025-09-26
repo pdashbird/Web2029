@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Consulta de alumnos</title>
+</head>
+<body>
+    <h1>Consulta de Alumnos</h1>
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 60%; margin: auto;">
+        <thead style="background-color: #0a9396; color: white;">
+            <tr>
+                <th>Alumno</th>
+                <th>Promedio Final</th>
+                <th>Nuevo Promedio</th>
+            </tr>
+        </thead>
+        <tbody id="tablaAlumnos">
+            
+        </tbody>
+    </table>
+
+    <script>
+        const alumnos = [
+            {
+                nombre: "EKEKO",
+                genero: "Masculino",
+                notas: [16, 13, 10, 12]
+            },
+            {
+                nombre: "HUACHOLA",
+                genero: "Femenino",
+                notas: [10, 15, 10, 5]
+            }
+        ];
+
+        const tbody = document.getElementById('tablaAlumnos');
+
+        alumnos.forEach(alumno => {
+            const sumaNotas = alumno.notas.reduce((acc, nota) => acc + nota, 0);
+            const promedio = sumaNotas / alumno.notas.length;
+            let nuevoPromedio;
+
+            if (alumno.genero.toLowerCase() === "masculino") {
+                nuevoPromedio = promedio + 3;
+            } else {
+                nuevoPromedio = promedio + 5;
+            }
+
+            const fila = document.createElement('tr');
+
+            fila.innerHTML = `
+                <td>${alumno.nombre}</td>
+                <td>${promedio.toFixed(2)}</td>
+                <td>${nuevoPromedio.toFixed(2)}</td>
+            `;
+
+            tbody.appendChild(fila);
+        });
+    </script>
+</body>
+</html>

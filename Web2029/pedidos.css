@@ -1,0 +1,99 @@
+/* ======= IMPORTAR FUENTE ======= */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* ======= RESETEO GENERAL ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======= ESTILOS GENERALES ======= */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* ======= ENCABEZADO ======= */
+header {
+  background-color: #0077cc;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+/* ======= FORMULARIO ======= */
+form {
+  background-color: white;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ======= ETIQUETAS Y CAMPOS ======= */
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #0077cc;
+}
+
+form input[type="text"],
+form input[type="email"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #0077cc;
+  outline: none;
+}
+
+/* ======= BOTÓN ======= */
+form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #005fa3;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+}

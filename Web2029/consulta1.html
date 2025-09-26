@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Consulta de pago interactiva</title>
+    <link rel="stylesheet" href="consulta1.html">
+</head>
+<body>
+
+    <h2>Calcula tu nuevo sueldo</h2>
+
+    <label for="sueldo">Sueldo actual:</label>
+    <input type="number" id="sueldo" placeholder="Ej: 1000" />
+
+    <br><br>
+
+    <label for="categoria">Categoría (1, 2, 3 o otro):</label>
+    <input type="number" id="categoria" placeholder="Ej: 1" />
+
+    <br><br>
+
+    <button onclick="calcularSueldo()">Calcular nuevo sueldo</button>
+
+    <h3 id="resultado"></h3>
+
+    <script>
+        function calcularSueldo() {
+            const sueldo = parseFloat(document.getElementById('sueldo').value);
+            const categoria = parseInt(document.getElementById('categoria').value);
+            let Nsueldo = 0;
+
+            if (isNaN(sueldo) || isNaN(categoria)) {
+                document.getElementById('resultado').textContent = 'Por favor, ingresa números válidos.';
+                return;
+            }
+
+            if (categoria === 1) {
+                Nsueldo = sueldo * 1.30;
+            } else if (categoria === 2) {
+                Nsueldo = sueldo * 1.20;
+            } else if (categoria === 3) {
+                Nsueldo = sueldo * 1.15;
+            } else {
+                Nsueldo = sueldo;
+            }
+
+            document.getElementById('resultado').textContent = `Nuevo sueldo es: $${Nsueldo.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
